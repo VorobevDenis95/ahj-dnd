@@ -7,23 +7,20 @@ export default class Container {
     this.onClick = this.onClick.bind(this);
     this.onClickNewCard = this.onClickNewCard.bind(this);
     this.onClosePopup = this.onClosePopup.bind(this);
+    this.onCardDelete = this.onCardDelete.bind(this);
   }
 
   static get marking() {
     return `
-    <div class="column-container">
         <h1 class="title__column-container"></h1>
         <div class="card__container"></div>
-        
-       
         
         <button class="btn_add__card">+ Add another card</button>
         <form class="new-card vissualy-hidden">
           <textarea class="input__new-card"></textarea>
             <button type="submit" class="add__new-card">Add</button>
             <button type="button" class="cancel__new-card">X</button>
-        </div>
-    </form>
+        </form>
     `;
   }
 
@@ -45,6 +42,8 @@ export default class Container {
 
     const card = this.parentE1.querySelector('.cancel__new-card');
     card.addEventListener('click', this.onClosePopup);
+
+    this.parentE1.addEventListener('click', this.onCardDelete);
   }
 
   createCard(value) {
@@ -62,6 +61,12 @@ export default class Container {
     const input = this.parentE1.querySelector('.input__new-card');
     if (input.value) {
       this.createCard(input.value);
+    }
+  }
+
+  onCardDelete(e) {
+    if (e.target.className === 'card-delete') {
+      e.target.parentNode.remove();
     }
   }
 

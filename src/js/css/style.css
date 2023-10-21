@@ -4,18 +4,21 @@
     margin: 0;
 }
 
+.allocation {
+    user-select: none;
+}
+
 .vissualy-hidden {
     position: fixed;
     transform: scale(0);
 }
 
-.content {
+.app_container {
     display: flex;
     justify-content: space-around;
 }
 
-.column-container {
-
+.column {
     padding: 10px;
     background-color: antiquewhite;
     min-width: 300px;
@@ -23,7 +26,8 @@
 }
 
 .card {
-    position: relative;
+    cursor: pointer;
+    border: 1px solid grey;
     margin-top: 10px;
     padding: 20px;
     background-color: #fff;
@@ -34,10 +38,11 @@
     word-wrap: break-word;
 }
 
-.card-delete {
+.closed_card {
     position: absolute;
-    font-size: 18px;
-    right: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 600;
     top: 18px;
     border: none;
     background-color: transparent;
@@ -63,15 +68,60 @@
     margin-top: 10px;
     width: 270px;
     min-height: 70px;
-
 }
 
+.textarea {
+    resize: none;
+}
 
-.add__new-card {
+.container_buttons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn_add {
     border: none;
+    width: 100px;
+    background-color: green;
     color: #fff;
-    background-color: #28d66b;
+    cursor: pointer;
+}
+
+.btn_add:hover {
+    font-weight: 500;
+    background-color: rgb(31, 49, 4);
+    box-shadow: 2cap;
+}
+
+.btn_close {
+    border: none;
     width: 50px;
-    height: 20px;
-    font-size: 14px;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.btn_close:hover {
+    font-weight: 500;
+    color: #fff;
+    background-color: #c71010;
+}
+
+.add_card {
+    text-decoration: none;
+    color: #c71010;
+}
+
+.dragged {
+    position: absolute;
+    z-index: 999;
+    pointer-events: none;
+    background: #fff;
+    transform: rotate(5deg);
+}
+
+.shadow_container {
+    border: 1px solid black;
+    margin-top: 10px;
+    background-color: rgb(163, 160, 156);
 }
