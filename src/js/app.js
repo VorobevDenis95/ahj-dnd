@@ -105,6 +105,9 @@ const cardInFocus = (e) => {
 let actualElement;
 
 const onMouseMove = (e) => {
+  if (document.querySelector('.shadow_container') && !e.target.classList.contains('shadow_container')) {
+    document.querySelector('.shadow_container').remove();
+  }
   actualElement.style.left = `${e.clientX}px`;
   actualElement.style.top = `${e.clientY}px`;
 
@@ -138,7 +141,7 @@ const onMouseMove = (e) => {
 const onMouseUp = (e) => {
   const mouseUpColumn = e.target.closest('.column');
 
-  if (e.target.classList.contains('shadow_container')) {
+  if (e.target.classList.contains('shadow_container') || (document.querySelector('.shadow_container'))) {
     const shadowContainer = mouseUpColumn.querySelector('.shadow_container');
     mouseUpColumn.insertBefore(actualElement, shadowContainer);
   }
